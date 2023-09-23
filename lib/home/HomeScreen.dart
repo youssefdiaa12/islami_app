@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:islami_c9_sat/MyThemeData.dart';
+import 'package:islami_c9_sat/home/Settings/settingsTap.dart';
 import 'package:islami_c9_sat/home/hadeth/HadethTab.dart';
 import 'package:islami_c9_sat/home/quran/QuranTab.dart';
 import 'package:islami_c9_sat/home/radio/RadioTab.dart';
@@ -22,7 +24,9 @@ class _HomeScreenState extends State<HomeScreen> {
       decoration: const BoxDecoration(
           image: DecorationImage(
               image: AssetImage(
-                'assets/images/main_background.jpg',
+                MyThemeData.is_Dark
+                    ? 'assets/images/dark_bg.png'
+                    : 'assets/images/main_background.jpg',
               ),
               fit: BoxFit.fill)),
       child: Scaffold(
@@ -36,23 +40,27 @@ class _HomeScreenState extends State<HomeScreen> {
             });
           },
           currentIndex: selectedTabIndex,
-          items: const [
+          items: [
             BottomNavigationBarItem(
-                backgroundColor: Color(0xFFB7935F),
+                backgroundColor: Theme.of(context).primaryColor,
                 icon: ImageIcon(AssetImage('assets/images/ic_quran.png')),
                 label: "Quran"),
             BottomNavigationBarItem(
-                backgroundColor: Color(0xFFB7935F),
+                backgroundColor: Theme.of(context).primaryColor,
                 icon: ImageIcon(AssetImage('assets/images/ic_hadeth.png')),
                 label: "Hadeth"),
             BottomNavigationBarItem(
-                backgroundColor: Color(0xFFB7935F),
+                backgroundColor: Theme.of(context).primaryColor,
                 icon: ImageIcon(AssetImage('assets/images/ic_sebha.png')),
                 label: "Tasbeh"),
             BottomNavigationBarItem(
-                backgroundColor: Color(0xFFB7935F),
+                backgroundColor: Theme.of(context).primaryColor,
                 icon: ImageIcon(AssetImage('assets/images/ic_radio.png')),
-                label: "Radio")
+                label: "Radio"),
+            BottomNavigationBarItem(
+                backgroundColor: Theme.of(context).primaryColor,
+                icon: (Icon(Icons.settings)),
+                label: "Settings")
           ],
         ),
         body: tabs[selectedTabIndex],
@@ -60,5 +68,5 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  var tabs = [QuranTab(), HadethTab(), TasbehTab(), RadioTab()];
+  var tabs = [QuranTab(), HadethTab(), TasbehTab(), RadioTab(), settingsTap()];
 }

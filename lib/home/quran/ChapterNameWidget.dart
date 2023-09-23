@@ -19,7 +19,7 @@ class ChapterNameWidget extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: 4),
         child: Text(
           name,
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
+          style: Theme.of(context).textTheme.bodyMedium,
         ),
       ),
     );

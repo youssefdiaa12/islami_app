@@ -16,7 +16,9 @@ class _TasbehTabState extends State<TasbehTab> {
   double _rotation = 0;
 
   void _onPressed() {
-    _rotation = _rotation + (-(pi / 4));
+    setState(() {
+      _rotation = _rotation + (-(pi / 4));
+    });
   }
 
   @override
@@ -48,13 +50,16 @@ class _TasbehTabState extends State<TasbehTab> {
                         height: 330,
                         width: double.infinity,
                         alignment: Alignment.center,
-                        child: Transform.rotate(
-                          angle: _rotation,
-                          child: const Image(
-                              alignment: Alignment.bottomRight,
-                              fit: BoxFit.fill,
-                              image: AssetImage(
-                                  'assets/images/body_sebha_logo.png')),
+                        child: InkWell(
+                          onTap: _onPressed,
+                          child: Transform.rotate(
+                            angle: _rotation,
+                            child: const Image(
+                                alignment: Alignment.bottomRight,
+                                fit: BoxFit.fill,
+                                image: AssetImage(
+                                    'assets/images/body_sebha_logo.png')),
+                          ),
                         ),
                       ),
                     ),
