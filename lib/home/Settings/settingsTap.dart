@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:islami_c9_sat/home/Settings/settings_data.dart';
 
 import 'LanguageBottomSheet.dart';
 import 'ThemeBottomSheet.dart';
 
 class settingsTap extends StatefulWidget {
-  const settingsTap({Key? key}) : super(key: key);
+  static const String routeName = 'settings';
 
   @override
   State<settingsTap> createState() => _settingsTapState();
@@ -12,12 +13,9 @@ class settingsTap extends StatefulWidget {
 
 class _settingsTapState extends State<settingsTap> {
   void f1() {
-    setState(() {
-      theme_mode;
-    });
+    setState(() {});
   }
 
-  String theme_mode = 'Light';
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +23,12 @@ class _settingsTapState extends State<settingsTap> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 50,
           ),
-          Container(margin: EdgeInsets.only(left: 12), child: Text('Theme')),
+          Container(
+              margin: const EdgeInsets.only(left: 12),
+              child: const Text('Theme')),
           InkWell(
             onTap: () {
               setState(() {
@@ -36,7 +36,7 @@ class _settingsTapState extends State<settingsTap> {
               });
             },
             child: Container(
-              margin: EdgeInsets.only(right: 12, left: 12),
+              margin: const EdgeInsets.only(right: 12, left: 12),
               padding: const EdgeInsets.all(12),
               width: double.infinity,
               decoration: BoxDecoration(
@@ -45,22 +45,24 @@ class _settingsTapState extends State<settingsTap> {
                   border: Border.all(
                     color: Theme.of(context).colorScheme.onSecondary,
                   )),
-              child: Text(theme_mode,
+              child: Text(settings_data.theme,
                   style: Theme.of(context).textTheme.bodyMedium),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Container(margin: EdgeInsets.only(left: 12), child: Text('Language')),
           InkWell(
             onTap: () {
-              ShowLanguageBottomSheet();
+              setState(() {
+                ShowLanguageBottomSheet();
+              });
             },
             child: Container(
               margin: EdgeInsets.only(right: 12, left: 12),
               padding: EdgeInsets.all(12),
-              child: Text('Engilsh',
+              child: Text(settings_data.language,
                   style: Theme.of(context).textTheme.bodyMedium),
               width: double.infinity,
               decoration: BoxDecoration(
@@ -77,21 +79,19 @@ class _settingsTapState extends State<settingsTap> {
   }
 
   void ShowThemeBottomSheet() {
-    setState(() {
-      showModalBottomSheet(
-        context: context,
-        builder: (context) {
-          return ThemeBottomSheet(theme_mode, setStateFunction: f1);
-        },
-      );
-    });
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return ThemeBottomSheet(setStateFunction: f1);
+      },
+    );
   }
 
   void ShowLanguageBottomSheet() {
     showModalBottomSheet(
       context: context,
       builder: (context) {
-        return LanguageBottomSheet();
+        return LanguageBottomSheet(setStateFunction: f1);
       },
     );
   }

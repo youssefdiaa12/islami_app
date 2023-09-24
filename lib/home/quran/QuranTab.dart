@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:islami_c9_sat/home/quran/ChapterNameWidget.dart';
 
-class QuranTab extends StatelessWidget {
+class QuranTab extends StatefulWidget {
+  @override
+  State<QuranTab> createState() => _QuranTabState();
+}
+
+class _QuranTabState extends State<QuranTab> {
   var names = [
     "الفاتحه",
     "البقرة",
@@ -135,7 +141,7 @@ class QuranTab extends StatelessWidget {
                   horizontal: BorderSide(
                       width: 2, color: Theme.of(context).dividerColor))),
           child: Text(
-            'Chapter Name',
+            AppLocalizations.of(context)!.chapter_name,
             style: Theme.of(context).textTheme.titleMedium,
           ),
         ),

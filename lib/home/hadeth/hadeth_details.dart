@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:islami_c9_sat/MyThemeData.dart';
+import 'package:islami_c9_sat/home/Settings/settings_data.dart';
 import 'package:islami_c9_sat/home/hadeth/hadethWidget.dart';
 
 class hadeth_details extends StatelessWidget {
@@ -17,7 +17,7 @@ class hadeth_details extends StatelessWidget {
         decoration: BoxDecoration(
             image: DecorationImage(
                 image: AssetImage(
-                  MyThemeData.is_Dark
+                  settings_data.theme == 'Dark'
                       ? 'assets/images/dark_bg.png'
                       : 'assets/images/main_background.jpg',
                 ),

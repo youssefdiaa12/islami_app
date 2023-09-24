@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:islami_c9_sat/MyThemeData.dart';
+import 'package:islami_c9_sat/home/Settings/settings_data.dart';
 
 class ThemeBottomSheet extends StatefulWidget {
-  String name = '';
   void Function() setStateFunction;
 
-  ThemeBottomSheet(this.name, {super.key, required this.setStateFunction});
+  ThemeBottomSheet({super.key, required this.setStateFunction});
 
   @override
   State<ThemeBottomSheet> createState() => _ThemeBottomSheetState();
@@ -12,8 +13,8 @@ class ThemeBottomSheet extends StatefulWidget {
 
 class _ThemeBottomSheetState extends State<ThemeBottomSheet> {
   bool is_selected = false;
-  String s1 = "Light";
-  String s2 = "Dark";
+  String s1 = settings_data.theme;
+  String s2 = settings_data.theme == 'Light' ? 'Dark' : 'Light';
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +24,7 @@ class _ThemeBottomSheetState extends State<ThemeBottomSheet> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          InkWell(
-              onTap: () {
-                selected();
-                widget.name = s1;
-                widget.setStateFunction();
-              },
-              child: selectedButton(s1)),
+          InkWell(onTap: () {}, child: selectedButton(settings_data.theme)),
           const SizedBox(height: 5),
           InkWell(
               onTap: () {
@@ -39,8 +34,6 @@ class _ThemeBottomSheetState extends State<ThemeBottomSheet> {
                   is_selected = true;
                 }
                 selected();
-                widget.name = s1;
-                widget.setStateFunction();
               },
               child: unselectedButton(s2)),
         ],
@@ -75,9 +68,10 @@ class _ThemeBottomSheetState extends State<ThemeBottomSheet> {
           : {
               s1 = 'Light',
               s2 = 'Dark',
-              widget.name = s1,
             };
+      settings_data.theme = s1;
+      s1 == 'Dark' ? MyThemeData.is_Dark = true : MyThemeData.is_Dark = false;
     });
-    widget.setStateFunction;
+    widget.setStateFunction();
   }
 }
