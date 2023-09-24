@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:islami_c9_sat/home/hadeth/HadethNameWidget.dart';
 import 'package:islami_c9_sat/home/hadeth/hadeth_data.dart';
 
@@ -25,7 +26,8 @@ class _HadethTabState extends State<HadethTab> {
               border: Border.symmetric(
                   horizontal: BorderSide(
                       color: Theme.of(context).dividerColor, width: 2))),
-          child: const Text('ahadeth', style: TextStyle(fontSize: 22)),
+          child: Text(AppLocalizations.of(context)!.hadeth,
+              style: TextStyle(fontSize: 22)),
         ),
         verses.isEmpty
             ? const Expanded(

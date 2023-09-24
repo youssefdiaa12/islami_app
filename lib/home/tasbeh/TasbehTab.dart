@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:islami_c9_sat/home/tasbeh/ayaelkorsydetails.dart';
 
 class TasbehTab extends StatefulWidget {
@@ -67,46 +68,48 @@ class _TasbehTabState extends State<TasbehTab> {
                 ),
               ),
             ),
-            Text("number of tasbeh",
+            Text(AppLocalizations.of(context)!.tasbeh,
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SizedBox(
-                height: 80,
-                width: 70,
-                child: ElevatedButton(
-                    style: ButtonStyle(
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                              30.0), // Set the border radius to make it circular
-                        ),
-                      ),
-                      backgroundColor: MaterialStateProperty.resolveWith<Color>(
-                          (Set<MaterialState> states) {
-                        if (states.contains(MaterialState.pressed)) {
-                          return Colors.white;
-                        }
-                        return const Color(0xffCAB497);
-                      }),
+            Container(
+              height: 80,
+              width: 80,
+              padding: EdgeInsets.only(top: 8),
+              child: ElevatedButton(
+                style: ButtonStyle(
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0),
                     ),
-                    onPressed: () {
-                      _onPressed();
-
-                      setState(() {
-                        if (cnt == 99) {
-                          cnt = 0;
-                        }
-                        cnt++;
-                      });
+                  ),
+                  backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                    (Set<MaterialState> states) {
+                      if (states.contains(MaterialState.pressed)) {
+                        return Colors.white;
+                      }
+                      return const Color(0xffCAB497);
                     },
-                    child: Text(
-                      '$cnt',
-                      style: const TextStyle(
-                        fontSize: 30,
-                        color: Colors.black,
-                      ),
-                    )),
+                  ),
+                ),
+                onPressed: () {
+                  _onPressed();
+
+                  setState(() {
+                    if (cnt == 99) {
+                      cnt = 0;
+                    }
+                    cnt++;
+                  });
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  child: Text(
+                    '$cnt',
+                    style: TextStyle(
+                      fontSize: 25,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
               ),
             ),
             cnt == 99
@@ -158,8 +161,8 @@ class _TasbehTabState extends State<TasbehTab> {
                                                 ayaelkorsydetails(verses));
                                       });
                                     },
-                                    child: const Text(
-                                      'aya elkorsy',
+                                    child: Text(
+                                      AppLocalizations.of(context)!.aya_elkorst,
                                       style: TextStyle(
                                         fontSize: 30,
                                         color: Colors.white,
@@ -189,13 +192,13 @@ class _TasbehTabState extends State<TasbehTab> {
 
   Text function(int cnt) {
     if (cnt % 66 == 0 && cnt != 0) {
-      return const Text("allah akbar",
+      return Text(AppLocalizations.of(context)!.all_akbar,
           style: TextStyle(color: Colors.white, fontSize: 30));
     } else if (cnt % 33 == 0 && cnt != 99 && cnt != 0) {
-      return const Text("elhamdolelah",
+      return Text(AppLocalizations.of(context)!.elh,
           style: TextStyle(color: Colors.white, fontSize: 30));
     }
-    return const Text("sobhan allah",
+    return Text(AppLocalizations.of(context)!.sobhan_allah,
         style: TextStyle(color: Colors.white, fontSize: 30));
   }
 

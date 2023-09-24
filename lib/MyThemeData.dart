@@ -4,7 +4,7 @@ class MyThemeData {
   static const Color lightPrimary = Color(0xFFB7935F);
   static const Color DarkPrimary = Color(0xFF141A2E);
   static const Color DarkSecondary = Color(0xFFFACC1D);
-  static const bool is_Dark = true;
+  static bool is_Dark = true;
   static ThemeData lightTheme = ThemeData(
       textTheme: const TextTheme(
         headlineSmall: TextStyle(
@@ -22,8 +22,15 @@ class MyThemeData {
         titleTextStyle: TextStyle(color: Colors.black, fontSize: 30),
       ),
       scaffoldBackgroundColor: Colors.transparent,
-      colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFFB7935F)),
-      primaryColor: lightPrimary,
+      colorScheme: ColorScheme.fromSeed(
+        seedColor: const Color(0xFFB7935F),
+        primary: lightPrimary,
+        secondary: lightPrimary,
+        onPrimary: Colors.white,
+        onSecondary: Colors.white,
+        background: const Color(0xFFCBA870),
+      ),
+      primaryColor: const Color(0xFFCBA870),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           selectedItemColor: Colors.black,
           selectedIconTheme: IconThemeData(size: 32)),
