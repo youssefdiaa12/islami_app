@@ -18,7 +18,7 @@ void main() {
     home: SplashScreen(),
   ));
   Timer(const Duration(seconds: 2), () {
-    runApp(const MyApp());
+    runApp(MyApp());
   });
 }
 
