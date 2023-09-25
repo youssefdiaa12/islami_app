@@ -14,11 +14,11 @@ import 'MyThemeData.dart';
 import 'SplashScreen.dart';
 
 void main() {
-  runApp(const MaterialApp(
+  runApp(MaterialApp(
     home: SplashScreen(),
   ));
   Timer(const Duration(seconds: 2), () {
-    runApp(MyApp());
+    runApp(const MyApp());
   });
 }
 
