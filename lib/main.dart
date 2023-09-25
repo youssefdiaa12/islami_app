@@ -15,7 +15,7 @@ import 'SplashScreen.dart';
 
 void main() {
   runApp(const MaterialApp(
-    home: SplashScreen(),
+    home: const SplashScreen(),
   ));
   Timer(const Duration(seconds: 2), () {
     runApp(MyApp());
