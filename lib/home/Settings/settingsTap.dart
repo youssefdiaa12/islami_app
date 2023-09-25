@@ -52,7 +52,9 @@ class _settingsTapState extends State<settingsTap> {
           const SizedBox(
             height: 20,
           ),
-          Container(margin: EdgeInsets.only(left: 12), child: Text('Language')),
+          Container(
+              margin: const EdgeInsets.only(left: 12),
+              child: const Text('Language')),
           InkWell(
             onTap: () {
               setState(() {
@@ -60,10 +62,8 @@ class _settingsTapState extends State<settingsTap> {
               });
             },
             child: Container(
-              margin: EdgeInsets.only(right: 12, left: 12),
-              padding: EdgeInsets.all(12),
-              child: Text(settings_data.language,
-                  style: Theme.of(context).textTheme.bodyMedium),
+              margin: const EdgeInsets.only(right: 12, left: 12),
+              padding: const EdgeInsets.all(12),
               width: double.infinity,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
@@ -71,6 +71,8 @@ class _settingsTapState extends State<settingsTap> {
                   border: Border.all(
                     color: Theme.of(context).colorScheme.onSecondary,
                   )),
+              child: Text(settings_data.language,
+                  style: Theme.of(context).textTheme.bodyMedium),
             ),
           )
         ],

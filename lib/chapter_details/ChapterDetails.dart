@@ -29,14 +29,14 @@ class _ChapterDetailsScreenState extends State<ChapterDetailsScreen> {
               title: Text(args.name),
             ),
             body: verses.isEmpty
-                ? Center(child: CircularProgressIndicator())
-                : Container(
+                ? const Center(child: CircularProgressIndicator())
+                : SizedBox(
                     height: double.infinity,
                     child: Column(
                       children: [
                         Expanded(
                           child: Card(
-                            margin: EdgeInsets.symmetric(
+                            margin: const EdgeInsets.symmetric(
                                 vertical: 24, horizontal: 18),
                             child: ListView.separated(
                               itemBuilder: (context, index) {
@@ -47,7 +47,7 @@ class _ChapterDetailsScreenState extends State<ChapterDetailsScreen> {
                                   height: 2,
                                   width: double.infinity,
                                   color: Theme.of(context).dividerColor,
-                                  margin: EdgeInsets.symmetric(
+                                  margin: const EdgeInsets.symmetric(
                                       horizontal: 64, vertical: 8),
                                 );
                               },

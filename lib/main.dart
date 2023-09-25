@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -9,9 +11,15 @@ import 'package:islami_c9_sat/home/hadeth/hadeth_details.dart';
 import 'package:islami_c9_sat/home/tasbeh/ayaelkorsydetails.dart';
 
 import 'MyThemeData.dart';
+import 'SplashScreen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const MaterialApp(
+    home: SplashScreen(),
+  ));
+  Timer(const Duration(seconds: 2), () {
+    runApp(const MyApp());
+  });
 }
 
 class MyApp extends StatefulWidget {
@@ -34,7 +42,7 @@ class _MyAppState extends State<MyApp> {
       theme: MyThemeData.lightTheme,
       darkTheme: MyThemeData.DarkTheme,
       themeMode:
-          settings_data.theme == 'Dark' ? ThemeMode.dark : ThemeMode.light,
+      settings_data.theme == 'Dark' ? ThemeMode.dark : ThemeMode.light,
       routes: {
         HomeScreen.routeName: (_) => HomeScreen(setStateFunction: functions),
         ChapterDetailsScreen.routeName: (_) => ChapterDetailsScreen(),

@@ -5,7 +5,7 @@ class ChapterNameWidget extends StatelessWidget {
   String name;
   int index;
 
-  ChapterNameWidget(this.name, this.index);
+  ChapterNameWidget(this.name, this.index, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class ChapterNameWidget extends StatelessWidget {
       },
       child: Container(
         alignment: Alignment.center,
-        padding: EdgeInsets.symmetric(vertical: 4),
+        padding: const EdgeInsets.symmetric(vertical: 4),
         child: Text(
           name,
           style: Theme.of(context).textTheme.bodyMedium,
