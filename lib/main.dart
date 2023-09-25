@@ -12,10 +12,9 @@ import 'package:islami_c9_sat/home/tasbeh/ayaelkorsydetails.dart';
 
 import 'MyThemeData.dart';
 import 'SplashScreen.dart';
-
 void main() {
-  runApp(const MaterialApp(
-    home: const SplashScreen(),
+  runApp(MaterialApp(
+    home: SplashScreen(),
   ));
   Timer(const Duration(seconds: 2), () {
     runApp(const MyApp());
