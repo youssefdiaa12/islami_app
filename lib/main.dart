@@ -6,18 +6,22 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:islami_c9_sat/chapter_details/ChapterDetails.dart';
 import 'package:islami_c9_sat/home/HomeScreen.dart';
 import 'package:islami_c9_sat/home/Settings/settingsTap.dart';
-import 'package:islami_c9_sat/home/Settings/settings_data.dart';
 import 'package:islami_c9_sat/home/hadeth/hadeth_details.dart';
 import 'package:islami_c9_sat/home/tasbeh/ayaelkorsydetails.dart';
+import 'package:islami_c9_sat/provider/provider_theme_language.dart';
+import 'package:provider/provider.dart';
 
 import 'MyThemeData.dart';
 import 'SplashScreen.dart';
+
 void main() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     home: SplashScreen(),
   ));
   Timer(const Duration(seconds: 2), () {
-    runApp(const MyApp());
+    runApp(ChangeNotifierProvider(
+        create: (buildContext) => provider_thene_language(),
+        child: const MyApp()));
   });
 }
 
@@ -30,20 +34,17 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
-  void functions() {
-    setState(() {});
-  }
-
   @override
   Widget build(BuildContext context) {
+    provider_thene_language obj = Provider.of<provider_thene_language>(context);
+// Listening to the changes
     return MaterialApp(
       title: 'Islami App',
       theme: MyThemeData.lightTheme,
       darkTheme: MyThemeData.DarkTheme,
-      themeMode:
-      settings_data.theme == 'Dark' ? ThemeMode.dark : ThemeMode.light,
+      themeMode: obj.currenttheme,
       routes: {
-        HomeScreen.routeName: (_) => HomeScreen(setStateFunction: functions),
+        HomeScreen.routeName: (_) => HomeScreen(),
         ChapterDetailsScreen.routeName: (_) => ChapterDetailsScreen(),
         hadeth_details.routeName: (_) => hadeth_details('', '', 0),
         ayaelkorsydetails.routeName: (_) => ayaelkorsydetails(''),
@@ -60,7 +61,7 @@ class _MyAppState extends State<MyApp> {
         Locale('en', ''), // English
         Locale('ar', ''), // Arabic
       ],
-      locale: settings_data.language == 'English'
+      locale: obj.lang == 'English'
           ? const Locale('en', '')
           : const Locale('ar', ''),
     );

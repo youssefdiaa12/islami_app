@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:islami_c9_sat/home/Settings/settings_data.dart';
+import 'package:provider/provider.dart';
 
+import '../../provider/provider_theme_language.dart';
 import 'LanguageBottomSheet.dart';
 import 'ThemeBottomSheet.dart';
 
@@ -12,13 +13,12 @@ class settingsTap extends StatefulWidget {
 }
 
 class _settingsTapState extends State<settingsTap> {
-  void f1() {
-    setState(() {});
-  }
 
 
   @override
   Widget build(BuildContext context) {
+    provider_thene_language obj = Provider.of<provider_thene_language>(context);
+
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,9 +31,7 @@ class _settingsTapState extends State<settingsTap> {
               child: const Text('Theme')),
           InkWell(
             onTap: () {
-              setState(() {
-                ShowThemeBottomSheet();
-              });
+              ShowThemeBottomSheet();
             },
             child: Container(
               margin: const EdgeInsets.only(right: 12, left: 12),
@@ -45,7 +43,8 @@ class _settingsTapState extends State<settingsTap> {
                   border: Border.all(
                     color: Theme.of(context).colorScheme.onSecondary,
                   )),
-              child: Text(settings_data.theme,
+              child: Text(
+                  obj.currenttheme == ThemeMode.light ? 'Light' : 'Dark',
                   style: Theme.of(context).textTheme.bodyMedium),
             ),
           ),
@@ -57,9 +56,7 @@ class _settingsTapState extends State<settingsTap> {
               child: const Text('Language')),
           InkWell(
             onTap: () {
-              setState(() {
-                ShowLanguageBottomSheet();
-              });
+              ShowLanguageBottomSheet();
             },
             child: Container(
               margin: const EdgeInsets.only(right: 12, left: 12),
@@ -71,8 +68,8 @@ class _settingsTapState extends State<settingsTap> {
                   border: Border.all(
                     color: Theme.of(context).colorScheme.onSecondary,
                   )),
-              child: Text(settings_data.language,
-                  style: Theme.of(context).textTheme.bodyMedium),
+              child:
+                  Text(obj.lang, style: Theme.of(context).textTheme.bodyMedium),
             ),
           )
         ],
@@ -84,7 +81,7 @@ class _settingsTapState extends State<settingsTap> {
     showModalBottomSheet(
       context: context,
       builder: (context) {
-        return ThemeBottomSheet(setStateFunction: f1);
+        return ThemeBottomSheet();
       },
     );
   }
@@ -93,7 +90,7 @@ class _settingsTapState extends State<settingsTap> {
     showModalBottomSheet(
       context: context,
       builder: (context) {
-        return LanguageBottomSheet(setStateFunction: f1);
+        return LanguageBottomSheet();
       },
     );
   }
