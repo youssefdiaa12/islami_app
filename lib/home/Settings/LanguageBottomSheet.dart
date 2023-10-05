@@ -1,38 +1,46 @@
 import 'package:flutter/material.dart';
-import 'package:islami_c9_sat/home/Settings/settings_data.dart';
+import 'package:islami_c9_sat/provider/provider_theme_language.dart';
+import 'package:provider/provider.dart';
 
 class LanguageBottomSheet extends StatefulWidget {
-  void Function() setStateFunction;
-
-  LanguageBottomSheet({super.key, required this.setStateFunction});
-
   @override
   State<LanguageBottomSheet> createState() => _LanguageBottomSheet();
 }
 
 class _LanguageBottomSheet extends State<LanguageBottomSheet> {
   bool is_selected = false;
-  String s1 = settings_data.language;
-  String s2 = settings_data.language == 'English' ? 'العربيه' : 'English';
+  String s1 = '';
+  String s2 = 'العربيه';
 
   @override
   Widget build(BuildContext context) {
+    provider_thene_language obj = Provider.of<provider_thene_language>(context);
+    s1 = obj.lang;
+    s2 = obj.lang == 'العربيه' ? 'English' : 'العربيه';
     return Container(
       color: Theme.of(context).colorScheme.background,
       padding: const EdgeInsets.all(12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          InkWell(onTap: () {}, child: selectedButton(s1)),
+          InkWell(
+              onTap: () {
+                obj.changeLanguage(s1);
+              },
+              child: selectedButton(s1)),
           const SizedBox(height: 5),
           InkWell(
               onTap: () {
                 if (s2 == 'English') {
-                  is_selected = false;
+                  s2 = 'العربيه';
+                  s1 = 'English';
+                  obj.changeLanguage('English');
                 } else {
                   is_selected = true;
+                  obj.changeLanguage('العربيه');
+                  s1 = 'العربيه';
+                  s2 = 'English';
                 }
-                selected();
               },
               child: unselectedButton(s2)),
         ],
@@ -57,19 +65,10 @@ class _LanguageBottomSheet extends State<LanguageBottomSheet> {
   }
 
   Widget unselectedButton(String text) {
-    return Text(text, style: Theme.of(context).textTheme.bodyMedium);
-  }
-
-  void selected() {
-    setState(() {
-      is_selected
-          ? {s1 = 'العربيه', s2 = 'English'}
-          : {
-              s1 = 'English',
-              s2 = 'العربيه',
-            };
-      settings_data.language = s1;
-    });
-    widget.setStateFunction();
+    return Row(
+      children: [
+        Text(text, style: Theme.of(context).textTheme.bodyMedium),
+      ],
+    );
   }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:islami_c9_sat/home/Settings/settings_data.dart';
 import 'package:islami_c9_sat/home/hadeth/hadethWidget.dart';
+import 'package:provider/provider.dart';
+
+import '../../provider/provider_theme_language.dart';
 
 class hadeth_details extends StatelessWidget {
   static const String routeName = 'hadeth_details';
@@ -12,12 +14,14 @@ class hadeth_details extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    provider_thene_language obj = Provider.of<provider_thene_language>(context);
+
     var args = ModalRoute.of(context)?.settings.arguments as hadeth_details;
     return Container(
         decoration: BoxDecoration(
             image: DecorationImage(
                 image: AssetImage(
-                  settings_data.theme == 'Dark'
+                  obj.currenttheme == ThemeMode.dark
                       ? 'assets/images/dark_bg.png'
                       : 'assets/images/main_background.jpg',
                 ),
@@ -34,7 +38,7 @@ class hadeth_details extends StatelessWidget {
                     child: Card(
                       elevation: 18,
                       margin:
-                          EdgeInsets.symmetric(vertical: 24, horizontal: 18),
+                      EdgeInsets.symmetric(vertical: 24, horizontal: 18),
                       child: ListView.separated(
                         itemBuilder: (context, index) {
                           return hadethWidget(args.content, index);
