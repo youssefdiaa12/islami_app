@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:islami_c9_sat/home/Settings/settingsTap.dart';
-import 'package:islami_c9_sat/home/Settings/settings_data.dart';
 import 'package:islami_c9_sat/home/hadeth/HadethTab.dart';
 import 'package:islami_c9_sat/home/quran/QuranTab.dart';
 import 'package:islami_c9_sat/home/radio/RadioTab.dart';
 import 'package:islami_c9_sat/home/tasbeh/TasbehTab.dart';
+import 'package:islami_c9_sat/provider/provider_theme_language.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
-  void Function() setStateFunction;
-
-  HomeScreen({required this.setStateFunction});
+  HomeScreen();
 
   static const String routeName = 'home';
 
@@ -19,20 +18,18 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  void function() {
-    setState(() {});
-  }
 
   int selectedTabIndex = 0;
 
   @override
   Widget build(BuildContext context) {
+    provider_thene_language obj = Provider.of<provider_thene_language>(context);
     return Container(
       width: double.infinity,
       height: double.infinity,
       decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage(settings_data.theme == 'Dark'
+              image: AssetImage(obj.currenttheme == ThemeMode.dark
                   ? 'assets/images/dark_bg.png'
                   : 'assets/images/main_background.jpg'),
               fit: BoxFit.fill)),
@@ -45,7 +42,6 @@ class _HomeScreenState extends State<HomeScreen> {
             setState(() {
               selectedTabIndex = index;
             });
-            widget.setStateFunction();
           },
           currentIndex: selectedTabIndex,
           items: [
