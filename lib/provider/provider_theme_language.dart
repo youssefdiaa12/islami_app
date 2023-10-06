@@ -4,30 +4,27 @@ import 'package:shared_preferences/shared_preferences.dart';
 class provider_thene_language extends ChangeNotifier {
   ThemeMode currenttheme = ThemeMode.dark;
   String lang = 'English';
-  SharedPreferences? preferences;
+  SharedPreferences? sharedPreferences;
 
   void changetheme(ThemeMode theme) {
     if (currenttheme == theme) {
-      SaveTheme(currenttheme);
       return;
     } else {
       currenttheme = theme;
-      SaveTheme(currenttheme);
       notifyListeners();
     }
   }
 
   void changeLanguage(String lan) {
     if (lang == lan) {
-      saveLanguage(lang);
       return;
     } else {
       lang = lan;
-      saveLanguage(lang);
       notifyListeners();
     }
   }
 
+  Future<void> saveTheme(ThemeMode t) async {}
   Future<void> SaveTheme(ThemeMode t) async {
     String theme1 = t == ThemeMode.dark ? 'Dark' : 'Light';
     await preferences?.setString('theme', theme1);
