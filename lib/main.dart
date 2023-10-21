@@ -15,13 +15,16 @@ import 'MyThemeData.dart';
 import 'SplashScreen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MaterialApp(
     home: SplashScreen(),
   ));
-  Timer(const Duration(seconds: 2), () {
+  Timer(const Duration(seconds: 2), () async {
+    var provider = provider_thene_language();
+    await provider.loadTheme();
+    await provider.loadLang();
     runApp(ChangeNotifierProvider(
-        create: (buildContext) => provider_thene_language(),
-        child: const MyApp()));
+        create: (buildContext) => provider, child: const MyApp()));
   });
 }
 
@@ -37,7 +40,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     provider_thene_language obj = Provider.of<provider_thene_language>(context);
-// Listening to the changes
+    // Listening to the changes
     return MaterialApp(
       title: 'Islami App',
       theme: MyThemeData.lightTheme,

@@ -17,6 +17,7 @@ class hadethWidget extends StatelessWidget {
         textDirection: TextDirection.rtl,
         style: const TextStyle(
           fontSize: 20,
+          fontFamily: "DTHUtils",
         ),
       ),
     );

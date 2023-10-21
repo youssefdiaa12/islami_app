@@ -3,12 +3,12 @@
   "quran": "القران",
   "hadeth": "الحديث",
   "tasbeh": "تسبيح",
-  "radio": "الاذاعه",
   "hadeth_number": "رقم الحديث",
   "chapter_name": "اسم السورة",
   "settings": "الاعدادات",
   "sobhan_allah": "سبحان الله",
   "elh": " الحمد لله",
   "all_akbar": "الله اكبر",
-  "aya_elkorst": "ايه الكرسي"
+  "aya_elkorst": "ايه الكرسي",
+  "radio": "إذاعة القرآن الكريم"
 }

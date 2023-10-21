@@ -38,7 +38,7 @@ class hadeth_details extends StatelessWidget {
                     child: Card(
                       elevation: 18,
                       margin:
-                      EdgeInsets.symmetric(vertical: 24, horizontal: 18),
+                          EdgeInsets.symmetric(vertical: 24, horizontal: 18),
                       child: ListView.separated(
                         itemBuilder: (context, index) {
                           return hadethWidget(args.content, index);
