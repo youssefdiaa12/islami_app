@@ -17,10 +17,12 @@ class ChapterNameWidget extends StatelessWidget {
       child: Container(
         alignment: Alignment.center,
         padding: const EdgeInsets.symmetric(vertical: 4),
-        child: Text(
-          name,
-          style: Theme.of(context).textTheme.bodyMedium,
-        ),
+        child: Text(name,
+            style: TextStyle(
+              fontFamily: "KOUFIBD",
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            )),
       ),
     );
   }
