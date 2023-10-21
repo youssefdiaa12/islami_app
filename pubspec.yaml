@@ -30,6 +30,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  audioplayers: 5.2.0
+
+
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -40,6 +43,7 @@ dependencies:
   intl: any
   provider: ^6.0.5
   shared_preferences: ^2.2.1
+  http: ^1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -69,27 +73,36 @@ flutter:
     - assets/images/
     - assets/files/
     - assets/ahadeth/
-    - assets/
-  #   - images/a_dot_ham.jpeg
+    #   - images/a_dot_ham.jpeg
 
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/assets-and-images/#resolution-aware
+    # An image asset can refer to one or more resolution-specific "variants", see
+    # https://flutter.dev/assets-and-images/#resolution-aware
 
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/assets-and-images/#from-packages
+    # For details regarding adding assets from package dependencies, see
+    # https://flutter.dev/assets-and-images/#from-packages
 
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
+    # To add custom fonts to your application, add a fonts section here,
+    # in this "flutter" section. Each entry in this list should have a
+    # "family" key with the font family name, and a "fonts" key with a
+    # list giving the asset and other descriptors for the font. For
+    # example:
+  fonts:
+    - family: KOUFIBD
+      fonts:
+        - asset: fonts/KOUFIBD.TTF
+    - family: ElMessiri-SemiBold
+      fonts:
+        - asset: fonts/ElMessiri-SemiBold.ttf
+    - family: ElMessiri-SemiBold
+      fonts:
+        - asset: fonts/ElMessiri-SemiBold.ttf
+    - family: DTHULUTH
+      fonts:
+        - asset: fonts/DTHULUTH.ttf
+    - family: JF Flat regular
+      fonts:
+        - asset: fonts/ElMessiri-SemiBold.ttf
+
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf

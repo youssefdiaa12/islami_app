@@ -58,7 +58,7 @@ class provider_thene_language extends ChangeNotifier {
 
   Future<void> loadLang() async {
     preferences = await SharedPreferences.getInstance();
-    String? lang1 = preferences?.getString('lang');
+    String? lang1 = getLanguage();
 
     if (lang1 != null) {
       lang1 == 'English' ? lang = 'English' : lang = 'العربيه';
